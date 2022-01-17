@@ -29,7 +29,10 @@ public class SpringRestConsumerApplication {
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
 			Quote quote = restTemplate.getForObject(
-					"https://quoters.apps.pcfone.io/api/random", Quote.class);
+					"https://reqres.in/api/unknown/", Quote.class);
+			//https://andruxnet-random-famous-quotes.p.rapidapi.com/
+			//https://quoters.apps.pcfone.io/api/random
+			
 			log.info(quote.toString());
 		};
 	}

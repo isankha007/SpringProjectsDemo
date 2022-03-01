@@ -2,6 +2,7 @@ package com.sankha.rest.webservices.restfulWebservices.user;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -22,17 +23,20 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-public class UserResources {
+public class UserJPAResources {
 	@Autowired
 	private UserDaoService service;
 	
-	@GetMapping("/users")
+	@Autowired
+	private UserRepository UserRepository;
+	
+	@GetMapping("/jpa/users")
 	public List<User> retriveAllUser(){
-		return service.findAll();
+		return UserRepository.findAll();
 		
 	}
 	
-	@GetMapping("/users/{id}")
+	@GetMapping("/jpa/users/{id}")
 	public EntityModel<User> retrieveUser(@PathVariable int id) {
 		User user = service.findOne(id);
 		
@@ -54,13 +58,13 @@ public class UserResources {
 		return resource;
 	}
 	
-//	@GetMapping("/users/{id}")
+//	@GetMapping("/jpa/users/{id}")
 //	public EntityModel<User> retriveUser(@PathVariable int id){
-//		User user = service.findOne(id);
-//		if(user==null) {
+//		Optional<User> user = UserRepository.findById(id);
+//		if(!user.isPresent()) {
 //			throw new UserNotFoundException("id-"+id);
 //		}
-//		EntityModel<User> model=EntityModel.of(user);
+//		EntityModel<User> model=EntityModel.of(user.get());
 //		
 //		WebMvcLinkBuilder linkToUser=linkTo(methodOn(this.getClass(), retriveAllUser()));
 //		model.add(linkToUser.withRel("all-users"));
@@ -69,8 +73,7 @@ public class UserResources {
 //		
 //	}
 	
-	
-	@PostMapping("/users")
+	@PostMapping("/jpa/users")
 	public ResponseEntity createUser(@Valid @RequestBody User user) {
 		User saveduser = service.save(user);
 		URI location=ServletUriComponentsBuilder
@@ -80,7 +83,7 @@ public class UserResources {
 		return ResponseEntity.created(location).build();
 	}
 	
-	@DeleteMapping("/users/{id}")
+	@DeleteMapping("/jpa/users/{id}")
 	public void delteUserById(@PathVariable int id){
 		User user = service.deleteById(id);
 		if(user==null) {

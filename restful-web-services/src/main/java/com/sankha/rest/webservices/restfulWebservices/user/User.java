@@ -2,10 +2,18 @@ package com.sankha.rest.webservices.restfulWebservices.user;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+
+//@ApiModel(description ="All detail about the user")
+@Entity
 public class User {
+	@Id
+	@GeneratedValue
 	private Integer id;
 	
 	@Size(min = 2,message = "name should have at least two character")

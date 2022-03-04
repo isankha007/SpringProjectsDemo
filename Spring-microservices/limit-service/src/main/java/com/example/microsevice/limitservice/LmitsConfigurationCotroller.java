@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.microsevice.limitservice.bean.LimitConfiguration;
+import com.example.microsevice.limitservice.confifuration.Configuration;
 
 @RestController
 public class LmitsConfigurationCotroller {

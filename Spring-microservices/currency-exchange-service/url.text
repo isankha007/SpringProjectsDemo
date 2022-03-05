@@ -11,3 +11,22 @@ http://localhost:8000/currency-exchange/from/USD/to/INR
 
 Currecny conversion service 
 http://localhost:8000/currency-con/from/USD/to/INR/qantity/10
+
+{
+  "id": 10001,
+  "from": "USD",
+  "to": "INR",
+  "conversionMultiple": 65.00,
+  "quantity": 10,
+  "totalCalculatedAmount": 650.00,
+  "environment": "8000 instance-id"
+}
+
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.6.4.jar:2.6.4]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE CURRENCY_EXCHANGE (ID BIGINT NOT NULL, CONVERSION_MULTIPLE DECIMAL(19,2), ENVIRONMENT VARCHAR(255), FROM[*] VARCHAR(255), TO VARCHAR(255), PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table currency_exchange (id bigint not null, conversion_multiple decimal(19,2), environment varchar(255), from varchar(255), to varchar(255), primary key (id)) [42001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453) ~[h2-1.4.200.jar:1.4.200]
+
+
+
+http://localhost:8100/currency-conversion/from/USD/to/INR/quantity/10

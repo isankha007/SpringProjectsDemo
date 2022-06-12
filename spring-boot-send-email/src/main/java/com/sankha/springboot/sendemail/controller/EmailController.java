@@ -27,7 +27,7 @@ public class EmailController {
 
 	 @PostMapping("/sendMailWithAttachment")
 	 public String sendMailWithAttachment(@RequestBody EmailDetails details) {
-		 String status= emailService.sendSimpleMail(details);
+		 String status= emailService.sendWithAttachment(details);
 		 return status;
 	 }
 }

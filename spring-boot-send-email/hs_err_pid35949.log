@@ -1,0 +1,48 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x000000011da96088, pid=35949, tid=79363
+#
+# JRE version: Java(TM) SE Runtime Environment 18.9 (11.0.11+9) (build 11.0.11+9-LTS-194)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM 18.9 (11.0.11+9-LTS-194, mixed mode, tiered, compressed oops, g1 gc, bsd-amd64)
+# Problematic frame:
+# J 3773 c2 jdk.internal.jimage.BasicImageReader.findLocation(Ljava/lang/String;Ljava/lang/String;)Ljdk/internal/jimage/ImageLocation; java.base@11.0.11 (115 bytes) @ 0x000000011da96088 [0x000000011da95e20+0x0000000000000268]
+#
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:49592 -javaagent:/Applications/SpringToolSuite4.app/Contents/Eclipse/configuration/org.eclipse.osgi/911/0/.cp/lib/javaagent-shaded.jar -Dfile.encoding=UTF-8 com.sankha.springboot.sendemail.SpringBootSendEmailApplication
+
+Host: MacBookAir10,1 x86_64 2400 MHz, 8 cores, 8G, Darwin 21.5.0
+Time: Sat Jun 11 23:16:28 2022 IST elapsed time: 373.897903 seconds (0d 0h 6m 13s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007ff172a33000):  JavaThread "Thread-5" [_thread_in_Java, id=79363, stack(0x000000030a2e2000,0x000000030a3e2000)]
+
+Stack: [0x000000030a2e2000,0x000000030a3e2000],  sp=0x000000030a3de360,  free space=1008k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+J 3773 c2 jdk.internal.jimage.BasicImageReader.findLocation(Ljava/lang/String;Ljava/lang/String;)Ljdk/internal/jimage/ImageLocation; java.base@11.0.11 (115 bytes) @ 0x000000011da96088 [0x000000011da95e20+0x0000000000000268]
+J 1274 c1 jdk.internal.module.SystemModuleFinders$SystemModuleReader.findImageLocation(Ljava/lang/String;)Ljdk/internal/jimage/ImageLocation; java.base@11.0.11 (42 bytes) @ 0x0000000116618dac [0x0000000116618ac0+0x00000000000002ec]
+j  jdk.internal.module.SystemModuleFinders$SystemModuleReader.read(Ljava/lang/String;)Ljava/util/Optional;+2 java.base@11.0.11
+j  jdk.internal.loader.BuiltinClassLoader.defineClass(Ljava/lang/String;Ljdk/internal/loader/BuiltinClassLoader$LoadedModule;)Ljava/lang/Class;+79 java.base@11.0.11
+J 3909 c1 jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(Ljava/lang/String;Z)Ljava/lang/Class; java.base@11.0.11 (143 bytes) @ 0x0000000116bd5064 [0x0000000116bd4c80+0x00000000000003e4]
+J 948 c1 jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(Ljava/lang/String;)Ljava/lang/Class; java.base@11.0.11 (7 bytes) @ 0x00000001165723d4 [0x00000001165722c0+0x0000000000000114]
+J 3909 c1 jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(Ljava/lang/String;Z)Ljava/lang/Class; java.base@11.0.11 (143 bytes) @ 0x0000000116bd511c [0x0000000116bd4c80+0x000000000000049c]
+J 820 c1 jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; java.base@11.0.11 (40 bytes) @ 0x000000011650411c [0x0000000116503b60+0x00000000000005bc]
+J 920 c1 java.lang.ClassLoader.loadClass(Ljava/lang/String;)Ljava/lang/Class; java.base@11.0.11 (7 bytes) @ 0x00000001165629dc [0x00000001165628c0+0x000000000000011c]
+v  ~StubRoutines::call_stub
+V  [libjvm.dylib+0x39bdbf]  _ZN9JavaCalls11call_helperEP9JavaValueRK12methodHandleP17JavaCallArgumentsP6Thread+0x21d
+V  [libjvm.dylib+0x39b221]  _ZN9JavaCalls12call_virtualEP9JavaValueP5KlassP6SymbolS5_P17JavaCallArgumentsP6Thread+0xe9
+V  [libjvm.dylib+0x39b369]  _ZN9JavaCalls12call_virtualEP9JavaValue6HandleP5KlassP6SymbolS6_S2_P6Thread+0x6f
+V  [libjvm.dylib+0x71d047]  _ZN16SystemDictionary19load_instance_classEP6Symbol6HandleP6Thread+0x101
+V  [libjvm.dylib+0x71c313]  _ZN16SystemDictionary30resolve_instance_class_or_nullEP6Symbol6HandleS2_P6Thread+0x421
+V  [libjvm.dylib+0x71bb4d]  _ZN16SystemDictionary15resolve_or_failEP6Symbol6HandleS2_bP6Thread+0x1b
+V  [libjvm.dylib+0x418344]  _Z28find_class_from_class_loaderP7JNIEnv_P6Symbolh6HandleS3_hP6Thread+0x30
+V  [libjvm.dylib+0x418266]  JVM_FindClassFromCaller+0x1ee
+C  [libjava.dylib+0x1ca5]

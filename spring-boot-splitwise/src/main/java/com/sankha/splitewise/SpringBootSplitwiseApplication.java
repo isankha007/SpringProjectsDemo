@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.sankha.splitewise.commands.AddGroupCommand;
 import com.sankha.splitewise.commands.RegisterUserCommand;
 import com.sankha.splitewise.commands.UpdateProfileCommand;
 import com.sankha.splitewise.commands.registry.CommandRegistry;
@@ -21,6 +22,9 @@ public class SpringBootSplitwiseApplication implements CommandLineRunner{
 	@Autowired
 	private UpdateProfileCommand updateProfileCommand;
 	
+	@Autowired
+	private AddGroupCommand addGroupCommand;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootSplitwiseApplication.class, args);
 		
@@ -33,9 +37,11 @@ public class SpringBootSplitwiseApplication implements CommandLineRunner{
 //		CommandRegistry commandRegistry= new CommandRegistryImpl();
         commandRegistry.registerCommand(registerUserCommand);
         commandRegistry.registerCommand(updateProfileCommand);
-
-      String input = "Register namanbhalla 999 password";
-       // String input = "5 UpdateProfile strongpassword";
+        commandRegistry.registerCommand(addGroupCommand);
+//
+       // String input = "Register u1 999 password";
+        String input = "u1 AddGroup Roommates";
+//       // String input = "5 UpdateProfile strongpassword";
         commandRegistry.executeCommandLine(input);
 		
 		

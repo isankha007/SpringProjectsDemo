@@ -30,10 +30,19 @@ public class UserService {
 	}
 	
 	public User updateProfile(Long userId, String newPassword) {
-        User user = userRepository.findUserById(userId);
+        User user = userRepository.findUserById(userId).get();
         user.setHashedPassword(newPassword);
         User savedUser = userRepository.save(user);
         return savedUser;
+    }
+	
+	public User getUserByName(String UserName) {
+		if(userRepository.findByUsername(UserName).isPresent()) {
+	        User user= userRepository.findByUsername(UserName).get();
+	        return user;
+		}
+		return null;
+
     }
 
 }

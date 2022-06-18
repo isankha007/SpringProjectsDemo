@@ -30,4 +30,11 @@ public class Group extends BaseModel{
  
  @OneToMany
  private List<Expense> expenses;
+
+@Override
+public String toString() {
+	return "Group [name=" + name + "]";
+}
+ 
+ 
 }

@@ -5,10 +5,12 @@ import org.springframework.stereotype.Controller;
 
 import com.sankha.splitewise.dto.AddGroupRequestDto;
 import com.sankha.splitewise.dto.AddGroupResponseDto;
+import com.sankha.splitewise.dto.AddMemberRequestDto;
+import com.sankha.splitewise.dto.AddMemberResponseDto;
 import com.sankha.splitewise.model.Group;
 import com.sankha.splitewise.model.User;
-import com.sankha.splitewise.service.GroupService;
-import com.sankha.splitewise.service.UserService;
+import com.sankha.splitewise.service.group.GroupService;
+import com.sankha.splitewise.service.user.UserService;
 
 @Controller
 public class GroupController {
@@ -26,6 +28,20 @@ public class GroupController {
 		}
 		
 		AddGroupResponseDto response=new AddGroupResponseDto();
+		response.setGroup(group);
+		return response;
+		
+		
+	} 
+	
+	public AddMemberResponseDto addMember(AddMemberRequestDto request) {
+		User user=userService.getUserByName(request.getMemberName());
+		Group group = null;
+		if(user!=null) {
+			 group=groupService.addMember(request.getGroupId(),user);
+		}
+		
+		AddMemberResponseDto response=new AddMemberResponseDto();
 		response.setGroup(group);
 		return response;
 		

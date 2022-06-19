@@ -1,4 +1,4 @@
-package com.sankha.splitewise.service;
+package com.sankha.splitewise.service.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

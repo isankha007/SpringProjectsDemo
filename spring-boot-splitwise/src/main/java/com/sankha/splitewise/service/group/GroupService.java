@@ -1,4 +1,4 @@
-package com.sankha.splitewise.service;
+package com.sankha.splitewise.service.group;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,17 @@ public class GroupService {
 		admins.add(admin);
 		group.setAdmins(admins);
 		group.setName(groupName);
+		Group group1=groupRepository.save(group);
+		return group1;
+	}
+	
+	public Group addMember(String groupId,User member) {
+		Group group= groupRepository.findById(Long.valueOf(groupId)).get();
+		List<User> participants= group.getParticipants();
+		participants.add(member);
+		group.setParticipants(participants);
+		//group.setAdmins(admins);
+		//group.se(groupName);
 		Group group1=groupRepository.save(group);
 		return group1;
 	}

@@ -8,7 +8,7 @@ import com.sankha.splitewise.dto.RegisterUserResponseDto;
 import com.sankha.splitewise.dto.UpdateProfileRequestDto;
 import com.sankha.splitewise.dto.UpdateProfileResponseDto;
 import com.sankha.splitewise.model.User;
-import com.sankha.splitewise.service.UserService;
+import com.sankha.splitewise.service.user.UserService;
 
 @Controller
 public class UserController {
